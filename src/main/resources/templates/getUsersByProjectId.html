@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Пользователи по ID проекта</title>
+</head>
+<body>
+<h1>Пользователи по ID проекта</h1>
+<form action="#" th:action="@{/api/users-projects/project/{projectId}(projectId=${projectId})}" method="get">
+    <label for="projectId">ID проекта:</label>
+    <input type="text" id="projectId" name="projectId" required>
+    <br>
+    <button type="submit">Получить пользователей</button>
+</form>
+<div>
+    <h2>Пользователи:</h2>
+    <ul th:each="userProject : ${usersProjects}">
+        <li th:text="'ID пользователя: ' + ${userProject.userId} + ', ID проекта: ' + ${userProject.projectId}"></li>
+    </ul>
+</div>
+</body>
+</html>

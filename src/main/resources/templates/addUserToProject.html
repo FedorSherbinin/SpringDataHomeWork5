@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Добавить пользователя в проект</title>
+</head>
+<body>
+<h1>Добавить пользователя в проект</h1>
+<form action="#" th:action="@{/api/users-projects/add}" method="post">
+    <label for="userId">ID пользователя:</label>
+    <input type="text" id="userId" name="userId" required>
+    <br>
+    <label for="projectId">ID проекта:</label>
+    <input type="text" id="projectId" name="projectId" required>
+    <br>
+    <button type="submit">Добавить пользователя в проект</button>
+</form>
+</body>
+</html>

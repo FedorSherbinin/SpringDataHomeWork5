@@ -2,7 +2,9 @@ package ru.geekbrains.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import ru.geekbrains.entities.User;
 import ru.geekbrains.entities.UsersProject;
+import ru.geekbrains.repositories.UserRepository;
 import ru.geekbrains.repositories.UsersProjectRepository;
 
 import java.util.List;
@@ -11,10 +13,12 @@ import java.util.List;
 public class UserProjectService {
 
     private final UsersProjectRepository usersProjectRepository;
+    private final UserRepository userRepository;
 
     @Autowired
-    public UserProjectService(UsersProjectRepository usersProjectRepository) {
+    public UserProjectService(UsersProjectRepository usersProjectRepository, UserRepository userRepository) {
         this.usersProjectRepository = usersProjectRepository;
+        this.userRepository = userRepository;
     }
 
     public List<UsersProject> getUsersByProjectId(Long projectId) {
@@ -40,5 +44,9 @@ public class UserProjectService {
                 .toList();
 
         usersProjectRepository.deleteAll(userProjects);
+    }
+
+    public List<User> getAllUsers() {
+        return userRepository.findAll();
     }
 }

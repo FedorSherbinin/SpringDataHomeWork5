@@ -9,7 +9,7 @@ import ru.geekbrains.services.UserProjectService;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/projects")
+@RequestMapping("/api/user-projects")
 public class UserProjectController {
 
     private final UserProjectService userProjectService;
@@ -19,27 +19,32 @@ public class UserProjectController {
         this.userProjectService = userProjectService;
     }
 
-    @GetMapping("/{projectId}/users")
+    @GetMapping("/project/{projectId}/users")
     public ResponseEntity<List<UsersProject>> getUsersByProjectId(@PathVariable Long projectId) {
         List<UsersProject> users = userProjectService.getUsersByProjectId(projectId);
         return ResponseEntity.ok(users);
     }
 
-    @GetMapping("/users/{userId}/projects")
+    @GetMapping("/user/{userId}/projects")
     public ResponseEntity<List<UsersProject>> getProjectsByUserId(@PathVariable Long userId) {
         List<UsersProject> projects = userProjectService.getProjectsByUserId(userId);
         return ResponseEntity.ok(projects);
     }
 
-    @PostMapping("/{projectId}/users/{userId}")
-    public ResponseEntity<Void> addUserToProject(@PathVariable Long userId, @PathVariable Long projectId) {
+    @PostMapping("/add")
+    public ResponseEntity<Void> addUserToProject(@RequestParam Long userId, @RequestParam Long projectId) {
         userProjectService.addUserToProject(userId, projectId);
         return ResponseEntity.ok().build();
     }
 
-    @DeleteMapping("/{projectId}/users/{userId}")
-    public ResponseEntity<Void> removeUserFromProject(@PathVariable Long userId, @PathVariable Long projectId) {
+    @PostMapping("/remove")
+    public ResponseEntity<Void> removeUserFromProject(@RequestParam Long userId, @RequestParam Long projectId) {
         userProjectService.removeUserFromProject(userId, projectId);
         return ResponseEntity.ok().build();
+    }
+
+    @GetMapping("/add")
+    public String showAddUserToProjectForm() {
+        return "addUserToProject"; // Имя вашего HTML-шаблона
     }
 }
