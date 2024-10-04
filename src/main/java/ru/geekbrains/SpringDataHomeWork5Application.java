@@ -1,0 +1,12 @@
+package ru.geekbrains;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class SpringDataHomeWork5Application {
+
+    public static void main(String[] args) {
+        SpringApplication.run(SpringDataHomeWork5Application.class, args);
+    }
+}

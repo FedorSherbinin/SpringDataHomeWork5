@@ -1,0 +1,26 @@
+SpringDataHomeWork5
+├── src
+│   ├── main
+│   │   ├── java
+│   │   │   └── ru
+│   │   │       └── gb
+│   │   │           ├── SpringDataHomeWork5Application.java
+│   │   │           ├── entities
+│   │   │           │   ├── User.java
+│   │   │           │   ├── Project.java
+│   │   │           │   └── UsersProject.java
+│   │   │           ├── repositories
+│   │   │           │   ├── UserRepository.java
+│   │   │           │   ├── ProjectRepository.java
+│   │   │           │   └── UsersProjectRepository.java
+│   │   │           ├── services
+│   │   │           │   └── UserProjectService.java
+│   │   │           └── controllers
+│   │   │               └── UserProjectController.java
+│   │   └── resources
+│   │       └── application.properties
+│   └── test
+│       └── java
+│           └── ru
+│               └── gb
+│                   └── SpringDataHomeWork5ApplicationTests.java
