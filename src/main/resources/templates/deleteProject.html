@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Удаление проекта</title>
+</head>
+<body>
+<h1>Удалить проект</h1>
+<form th:action="@{/api/projects/delete}" method="post">
+    <label for="projectId">Выберите проект для удаления:</label>
+    <select id="projectId" name="projectId" required>
+        <option th:each="project : ${projects}" th:value="${project.id}" th:text="${project.name}"></option>
+    </select>
+    <button type="submit">Удалить</button>
+</form>
+<p><a th:href="@{/}">Вернуться на главную</a></p>
+</body>
+</html>

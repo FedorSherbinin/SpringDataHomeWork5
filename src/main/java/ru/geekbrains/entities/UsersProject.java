@@ -1,21 +1,44 @@
 package ru.geekbrains.entities;
 
 import jakarta.persistence.*;
-import lombok.*;
 
 @Entity
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
-@Table(name = "users_projects")
-public class UsersProject extends EntityWithRelation {
+public class UsersProject {
 
-    private Long projectId;
-    private Long userId;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
-    public UsersProject(Long id, Long projectId, Long userId) {
-        super(id, null); // Передача id в абстрактный класс EntityWithRelation
-        this.projectId = projectId;
-        this.userId = userId;
+    @ManyToOne // Указывает на связь многие к одному
+    @JoinColumn(name = "user_id", nullable = false) // Идентификатор пользователя, не может быть null
+    private User user;
+
+    @ManyToOne // Указывает на связь многие к одному
+    @JoinColumn(name = "project_id", nullable = false) // Идентификатор проекта, не может быть null
+    private Project project;
+
+    // Геттеры и сеттеры
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public Project getProject() {
+        return project;
+    }
+
+    public void setProject(Project project) {
+        this.project = project;
     }
 }

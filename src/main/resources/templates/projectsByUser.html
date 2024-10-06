@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Проекты пользователя</title>
+</head>
+<body>
+<h1>Проекты пользователя</h1>
+<p>
+    <a th:href="@{/users}">Назад к списку пользователей</a>
+</p>
+<ul>
+    <li th:each="project : ${projects}">
+        <span th:text="${project.name}"></span>
+    </li>
+</ul>
+</body>
+</html>

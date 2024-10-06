@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Пользователи в проекте</title>
+    <style>
+        /* Ваши стили */
+    </style>
+</head>
+<body>
+<h1>Пользователи в проекте <span th:text="${project.name}"></span></h1>
+<table>
+    <tr>
+        <th>Имя пользователя</th>
+        <th>Email</th>
+        <th>Роль</th>
+    </tr>
+    <tr th:each="user : ${users}">
+        <td th:text="${user.username}"></td>
+        <td th:text="${user.email}"></td>
+        <td th:text="${user.role}"></td>
+    </tr>
+</table>
+<p th:if="${#lists.isEmpty(users)}">Нет пользователей в этом проекте</p>
+<a th:href="@{/projects}">Вернуться к проектам</a>
+</body>
+</html>

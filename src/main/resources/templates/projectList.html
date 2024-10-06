@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Список проектов</title>
+    <style>
+        /* Ваши стили */
+    </style>
+</head>
+<body>
+<h1>Список проектов</h1>
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Название</th>
+        <th>Описание</th>
+        <th>Действия</th>
+    </tr>
+    <tr th:each="project : ${projects}">
+        <td th:text="${project.id}"></td>
+        <td th:text="${project.name}"></td>
+        <td th:text="${project.description}"></td>
+        <td>
+            <a th:href="@{/api/users-projects/add/projects/{id}/users(id=${project.id})}">Просмотреть пользователей</a>
+        </td>
+    </tr>
+</table>
+<a href="/addProject">Добавить проект</a>
+<p>
+    <a th:href="@{/}">Вернуться на главную</a>
+</p>
+</body>
+</html>
